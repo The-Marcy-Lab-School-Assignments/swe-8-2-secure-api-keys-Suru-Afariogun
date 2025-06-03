@@ -4,7 +4,7 @@
 
 const path = require('path');
 const express = require('express');
-// const { send } = require('process');
+const { send } = require('process');
 require('dotenv').config();
 
 //////////////////////////
@@ -14,7 +14,7 @@ require('dotenv').config();
 const port = 8080;
 const pathToDistFolder = path.join(__dirname, '../frontend/dist');
 const app = express();
-const { API_Key } = process.env;
+const { API_KEY } = process.env;
 //////////////////////////
 // Middleware/Controllers
 //////////////////////////
@@ -32,7 +32,7 @@ const serveGifs = async (req, res) => {
 const serveStatic = express.static(pathToDistFolder);
 
 app.use(serveStatic);
-app.get('/api/gifs', serveGifs);
+app.get(`/api/gifs`, serveGifs);
 //////////////////////////
 // Listener
 //////////////////////////
